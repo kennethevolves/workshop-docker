@@ -1,0 +1,34 @@
+import {
+  CanActivate,
+  ExecutionContext,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import type { Request } from 'express';
+
+export type SessionPayload = { sub: number; email: string; name: string };
+
+export type AuthenticatedRequest = Request & { user: SessionPayload };
+
+@Injectable()
+export class AuthGuard implements CanActivate {
+  constructor(private readonly jwt: JwtService) {}
+
+  async canActivate(context: ExecutionContext): Promise<boolean> {
+    const request = context.switchToHttp().getRequest<AuthenticatedRequest>();
+    const [type, token] = request.headers.authorization?.split(' ') ?? [];
+
+    if (type !== 'Bearer' || !token) {
+      throw new UnauthorizedException('Inicia sesión para continuar');
+    }
+
+    try {
+      request.user = await this.jwt.verifyAsync<SessionPayload>(token);
+    } catch {
+      throw new UnauthorizedException('La sesión expiró, inicia sesión de nuevo');
+    }
+
+    return true;
+  }
+}
