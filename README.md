@@ -110,4 +110,4 @@ pnpm dev
 
 ## Manual de comandos
 
-Todos los comandos del taller están en [`docs/COMMANDS.md`](docs/COMMANDS.md).
+Todos los comandos del taller están en [`docs/COMANDOS.md`](docs/COMANDOS.md).
