@@ -135,7 +135,7 @@ Dentro de `psql`: `\dt` lista las tablas y `\q` sale.
 ### Preparar el proyecto
 
 ```powershell
-git clone https://github.com/[usuario]/workshop-docker.git
+git clone https://github.com/kennethevolves/workshop-docker.git
 cd workshop-docker
 ```
 

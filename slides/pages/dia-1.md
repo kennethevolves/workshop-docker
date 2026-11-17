@@ -1024,7 +1024,7 @@ docker volume rm shop-db
 2. El repositorio del taller clonado y con dependencias instaladas, para detectar problemas hoy y no mañana:
 
 ```powershell
-git clone https://github.com/[usuario]/workshop-docker.git
+git clone https://github.com/kennethevolves/workshop-docker.git
 cd workshop-docker/api
 pnpm install
 cd ../shop
