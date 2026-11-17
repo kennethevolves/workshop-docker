@@ -1,0 +1,281 @@
+/* Estilo del taller: fondo blanco, azul Docker, tipografía Geist. */
+:root {
+  --docker: #1d63ed;
+  --docker-soft: #1d63ed;
+  --docker-navy: #0b1f4d;
+  --bg: #ffffff;
+  --panel: #f4f7fd;
+  --line: #dbe4f3;
+  --text: #0b1220;
+  --muted: #5b6b86;
+  --ok: #15803d;
+  --warn: #b45309;
+  --slidev-theme-primary: #1d63ed;
+}
+
+/* Todas las diapositivas: fondo blanco y contenido centrado en vertical. */
+.slidev-layout {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.slidev-layout.default {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slidev-layout h1 {
+  color: var(--docker-navy);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.slidev-layout h2 {
+  color: var(--docker);
+  font-weight: 600;
+}
+
+.slidev-layout strong {
+  color: var(--docker-navy);
+}
+
+.slidev-layout a {
+  color: var(--docker);
+}
+
+.slidev-layout :not(pre) > code {
+  background: #eaf1fe;
+  border: 1px solid #cddcfb;
+  border-radius: 6px;
+  padding: 0.1em 0.4em;
+  color: #1550c7;
+}
+
+/* Bloques de código: claros, con borde, compactos para que quepan. */
+.slidev-layout .slidev-code {
+  background: var(--panel) !important;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.slidev-layout .slidev-code-wrapper,
+.slidev-layout pre {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.slidev-layout p {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.slidev-layout table {
+  font-size: 0.85em;
+}
+
+.slidev-layout th {
+  color: var(--docker);
+  text-align: left;
+}
+
+.slidev-layout td,
+.slidev-layout th {
+  border-color: var(--line);
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+
+/* Portadas de bloque: fondo azul Docker. */
+.slidev-layout.section {
+  background: var(--docker);
+  color: #ffffff;
+}
+
+.slidev-layout.section h1 {
+  color: #ffffff;
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+.slidev-layout.section .kicker,
+.slidev-layout.section .lead {
+  color: #dbe7ff;
+}
+
+.kicker {
+  color: var(--docker);
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.small-note {
+  font-size: 0.8rem;
+}
+
+/* Etiquetas de práctica y verificación */
+.badge {
+  align-self: flex-start;
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.15rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.badge-practice {
+  background: #eaf1fe;
+  border: 1px solid var(--docker);
+  color: var(--docker);
+}
+
+.badge-check {
+  background: #ecfdf3;
+  border: 1px solid var(--ok);
+  color: var(--ok);
+}
+
+.badge-warn {
+  background: #fffbeb;
+  border: 1px solid var(--warn);
+  color: var(--warn);
+}
+
+/* Diagramas con cajas */
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 0.5rem;
+}
+
+.cols-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.row > * {
+  flex: 1;
+}
+
+.flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.arrow {
+  color: var(--muted);
+  font-size: 1.5rem;
+}
+
+.box {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.box small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.box-blue {
+  border-color: var(--docker);
+  background: #eaf1fe;
+}
+
+.box-ok {
+  border-color: var(--ok);
+  background: #ecfdf3;
+}
+
+.box-warn {
+  border-color: #d97706;
+  background: #fffbeb;
+}
+
+.box-ghost {
+  border-style: dashed;
+  background: transparent;
+  color: var(--muted);
+}
+
+.title-sm {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.net {
+  border: 1.5px dashed var(--docker);
+  border-radius: 12px;
+  padding: 1rem;
+  position: relative;
+}
+
+.net-label {
+  position: absolute;
+  top: -0.7rem;
+  left: 1rem;
+  background: var(--bg);
+  padding: 0 0.5rem;
+  color: var(--docker);
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+}
+
+.mono {
+  font-family: "Geist Mono", ui-monospace, monospace;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.big {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--docker);
+}
