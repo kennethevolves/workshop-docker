@@ -10,3 +10,5 @@ next-env.d.ts
 api/src/generated/
 api/uploads/
 docs/*.pdf
+*.local.ps1
+docker-compose.yml
