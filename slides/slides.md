@@ -73,3 +73,11 @@ Bienvenida. Antes de empezar: confirmar que todos tienen Docker Desktop abierto 
 ---
 src: ./pages/dia-1.md
 ---
+
+---
+src: ./pages/dia-2.md
+---
+
+---
+src: ./pages/dia-3.md
+---
