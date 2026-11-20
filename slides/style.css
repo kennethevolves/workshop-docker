@@ -279,3 +279,43 @@
   line-height: 1;
   color: var(--docker);
 }
+
+.code-sm .slidev-code {
+  font-size: 0.56rem !important;
+  line-height: 1.35;
+}
+
+.code-md .slidev-code {
+  font-size: 0.64rem !important;
+}
+
+.size-label {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  background: var(--docker);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-right: 0.35rem;
+}
