@@ -7,6 +7,7 @@ Tienda en línea de laptops y componentes, con su panel de administración. Es e
 | `api/`   | API en NestJS + Prisma: login, productos y fotos | 3000   |
 | `shop/`  | Tienda pública en Next.js                        | 3001   |
 | `admin/` | Panel de administración en Next.js               | 3002   |
+| `slides/` | Diapositivas del taller en Slidev               | 3030   |
 
 Cada carpeta es un proyecto independiente, con su propio `package.json` y `pnpm-lock.yaml`.
 
@@ -107,6 +108,85 @@ pnpm dev
 
 - Tienda: http://localhost:3001
 - Panel: http://localhost:3002 (entra con `ADMIN_EMAIL` y `ADMIN_PASSWORD` de `api/.env`)
+
+## Ver las diapositivas del taller
+
+Las diapositivas de los tres días están en la carpeta `slides/`. Se abren en el navegador con Slidev.
+
+### 1. Abre una terminal
+
+En Windows: abre **PowerShell** o la terminal de **VS Code** (menú **Terminal → New Terminal**).
+
+### 2. Entra a la carpeta del proyecto
+
+La terminal siempre está "parada" en una carpeta. Para saber en cuál estás:
+
+```powershell
+pwd
+```
+
+Ve a la carpeta donde clonaste el repositorio. Por ejemplo, si lo clonaste en Documentos:
+
+```powershell
+cd $HOME\Documents\workshop-docker
+```
+
+Cambia la ruta por la tuya. Para confirmar que estás en el lugar correcto:
+
+```powershell
+ls
+```
+
+Debes ver las carpetas `api`, `shop`, `admin`, `docs` y `slides`. Si no las ves, no estás en `workshop-docker`.
+
+Si abriste la carpeta `workshop-docker` en VS Code, su terminal ya empieza ahí y puedes saltarte este paso.
+
+### 3. Trae la versión más reciente
+
+```powershell
+git pull
+```
+
+### 4. Entra a la carpeta de las diapositivas
+
+```powershell
+cd slides
+```
+
+`pwd` ahora debe terminar en `workshop-docker\slides`.
+
+### 5. Instala las dependencias (solo la primera vez)
+
+```powershell
+pnpm install
+```
+
+Si dice que `pnpm` no se reconoce, corre primero `corepack enable` y repite.
+
+### 6. Arranca las diapositivas
+
+```powershell
+pnpm dev
+```
+
+Se abre el navegador en http://localhost:3030. Si no se abre solo, copia esa dirección en el navegador.
+
+| Tecla | Qué hace |
+| --- | --- |
+| Flecha derecha o espacio | Siguiente paso o diapositiva |
+| Flecha izquierda | Paso o diapositiva anterior |
+| `o` | Vista general de todas las diapositivas |
+| `f` | Pantalla completa |
+
+### 7. Para cerrarlas
+
+En la terminal donde corre `pnpm dev`, presiona **Ctrl+C**. Para regresar a la carpeta del proyecto:
+
+```powershell
+cd ..
+```
+
+La próxima vez solo repites los pasos 1, 2, 4 y 6: la instalación ya quedó hecha.
 
 ## Manual de comandos
 
