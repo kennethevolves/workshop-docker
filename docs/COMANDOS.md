@@ -199,13 +199,15 @@ docker push [usuario]/nexo-admin:1.0
 Descarga y corre la tienda que subió tu compañero, con el nombre que tú quieras:
 
 ```powershell
-docker pull [usuario-del-compañero]/nexo-shop:1.0
 docker run -d `
   --name shop-companero `
   -p 3005:3001 `
+  -e API_URL=http://host.docker.internal:3000 `
   -e STORE_NAME="Tienda de [compañero]" `
   [usuario-del-compañero]/nexo-shop:1.0
 ```
+
+`host.docker.internal` es tu máquina vista desde un contenedor: así la tienda de tu compañero usa **tu** API (publicado en el puerto 3000) y muestra tus productos. `docker run` descarga la imagen si no la tienes.
 
 Abre `http://localhost:3005`. Es la misma imagen que construyó él; solo cambió la variable de entorno.
 
@@ -273,16 +275,6 @@ Si la tienda dice que no hay productos, te faltó el seed.
 
 El navegador corre en tu máquina, fuera de Docker, así que no conoce los nombres de los servicios.
 
-### Producción con las imágenes de Docker Hub
-
-```powershell
-docker compose -f docker-compose.prod.yml pull
-docker compose -f docker-compose.prod.yml up -d
-docker compose -f docker-compose.prod.yml down
-```
-
-La bandera `-f` indica qué archivo usar. Este no construye nada: descarga las imágenes que subiste el Día 2.
-
 ## Limpieza
 
 | Comando | Qué borra |
@@ -308,6 +300,8 @@ Todos piden confirmación. Léela antes de escribir `y`.
 | PostgreSQL se cae al arrancar | Falta `POSTGRES_PASSWORD` | Agrega `-e POSTGRES_PASSWORD=...` |
 | Adminer no encuentra el servidor `db` | Los contenedores no están en la misma red | Revisa con `docker network inspect shop-net` |
 | Los datos se borran aunque usas volumen | Ruta de PostgreSQL 17 en PostgreSQL 18 | Monta en `/var/lib/postgresql` |
+| `password authentication failed for user "shop"` | El volumen de PostgreSQL se creó con otras credenciales: las variables `POSTGRES_*` solo se usan la primera vez | Usa las credenciales originales o borra el contenedor y el volumen y créalos de nuevo |
+| El panel responde "Correo o contraseña incorrectos" | No se corrió el seed, o se corrió con otra contraseña | `docker exec -e ADMIN_EMAIL=... -e ADMIN_PASSWORD=... api npx prisma db seed` |
 | `denied: requested access to the resource is denied` al hacer push | No iniciaste sesión o el nombre no empieza con tu usuario | `docker login` y `docker tag ... [usuario]/[repositorio]:[versión]` |
 | `ERR_PNPM_OUTDATED_LOCKFILE` en el build | `pnpm-lock.yaml` no coincide con `package.json` | Corre `pnpm install` en tu máquina y vuelve a construir |
 | En Windows: comando partido que falla | Usaste `\` en lugar del acento grave | En PowerShell cada línea termina en `` ` `` |
